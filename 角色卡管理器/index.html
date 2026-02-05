@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ST Card Manager - MuteFun Style</title>
+    
+    <!-- 外部依赖 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rose: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            500: '#f43f5e',
+                            600: '#e11d48'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- 项目样式 -->
+    <style>
+        /* 基础CSS变量和样式 */
+        :root {
+            --bg-body: #F3F4F6;
+            --bg-card: #FFFFFF;
+            --bg-sidebar: #FFFFFF;
+            --text-main: #1F2937;
+            --text-sub: #6B7280;
+            --accent: #F43F5E;
+            --border-color: #E5E7EB;
+        }
+
+        .dark {
+            --bg-body: #0F0F0F;
+            --bg-card: #1A1A1A;
+            --bg-sidebar: #1A1A1A;
+            --text-main: #E5E7EB;
+            --text-sub: #9CA3AF;
+            --border-color: #2D2D2D;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: system-ui, -apple-system, sans-serif;
+            transition: background-color 0.3s ease;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* 滚动条美化 */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: var(--text-sub);
+            border-radius: 10px;
+            opacity: 0.5;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: var(--text-main);
+        }
+
+        [v-cloak] { display: none; }
+    </style>
+</head>
+<body class="dark:bg-gray-900">
+    <div id="app" v-cloak></div>
+    
+    <!-- Vue应用 -->
+    <script type="module">
+        import { createApp, ref, computed, onMounted, watch } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+        import App from './src/App.vue';
+        
+        const app = createApp(App);
+        app.mount('#app');
+        
+        // 初始化图标
+        lucide.createIcons();
+    </script>
+</body>
+</html>
